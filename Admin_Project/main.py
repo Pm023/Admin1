@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 # Import routes from api folder
-from api.routes import auth, buyer, manufacturer, tasks, calendar, file_upload
+from api.routes import auth, buyer, manufacturer, tasks, calendar, file_upload, quotation, proforma_invoice
 
 # Import database (adjust path as needed)
 try:
@@ -40,6 +40,8 @@ app.include_router(manufacturer.router, prefix="/api/manufacturers", tags=["Manu
 app.include_router(tasks.router, prefix="/api/tasks", tags=["Tasks"])
 app.include_router(calendar.router, prefix="/api/calendar", tags=["Calendar"])
 app.include_router(file_upload.router, prefix="/api/upload", tags=["Upload"])
+app.include_router(quotation.router, prefix="/api/quotation", tags=["Quotation"])
+app.include_router(proforma_invoice.router, prefix="/api/proforma", tags=["Proforma Invoice"])
 
 # Root endpoint - Redirect to frontend
 @app.get("/")
